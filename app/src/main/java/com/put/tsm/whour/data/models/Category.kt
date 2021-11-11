@@ -1,3 +1,4 @@
 package com.put.tsm.whour.data.models
 
-data class Category(val id: String, val name: String)
+
+data class Category(val id: String, val name: String, val type: List<String>)
