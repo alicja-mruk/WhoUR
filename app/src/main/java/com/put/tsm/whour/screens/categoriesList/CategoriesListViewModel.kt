@@ -17,9 +17,9 @@ import javax.inject.Inject
 class CategoriesListViewModel @Inject constructor(private val getAllCategories: GetAllCategoriesUseCase) :
     ViewModel() {
 
-    var categoriesList = mutableStateOf<List<Category>>(listOf())
-    var isLoading = mutableStateOf(false)
-    var loadError = mutableStateOf<Exception?>(null)
+    val categoriesList = mutableStateOf<List<Category>>(listOf())
+    val isLoading = mutableStateOf(false)
+    val loadError = mutableStateOf<Exception?>(null)
 
     init {
         viewModelScope.launch {
