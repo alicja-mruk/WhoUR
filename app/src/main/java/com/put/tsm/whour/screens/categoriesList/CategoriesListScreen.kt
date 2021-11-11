@@ -14,6 +14,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.res.stringResource
+import com.put.tsm.whour.R
+import com.put.tsm.whour.screens.RetrySection
 
 @Composable
 fun CategoriesListScreen(navController: NavController) {
@@ -33,9 +38,24 @@ fun CategoriesList(
     viewModel: CategoriesListViewModel = hiltViewModel()
 ) {
     val categoriesList by remember { viewModel.categoriesList }
+    val loadError by remember { viewModel.loadError }
+    val isLoading by remember { viewModel.isLoading }
+
     LazyColumn(contentPadding = PaddingValues(16.dp)) {
         items(categoriesList) { category ->
             CategoryRow(navController = navController, category = category)
+        }
+    }
+
+    Box(
+        contentAlignment = Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        if (isLoading) {
+            CircularProgressIndicator(color = MaterialTheme.colors.primary)
+        }
+        loadError?.let {
+            RetrySection(error = it)
         }
     }
 }
