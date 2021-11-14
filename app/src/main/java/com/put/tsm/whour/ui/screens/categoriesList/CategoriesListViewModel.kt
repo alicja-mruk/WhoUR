@@ -1,13 +1,10 @@
-package com.put.tsm.whour.screens.categoriesList
+package com.put.tsm.whour.ui.screens.categoriesList
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.data.repository.usecases.GetAllCategoriesUseCase
-import com.put.tsm.whour.data.repository.usecases.GetAllItemsUseCase
-import com.put.tsm.whour.data.repository.usecases.GetItemsFromCategoryUseCase
 import com.put.tsm.whour.data.utils.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

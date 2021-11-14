@@ -6,4 +6,8 @@
     <string name="cat_lover_description">Cat lover description</string>
     <string name="unknown_type">This type is unknown</string>
     <string name="empty_list">List is empty</string>
+    <string name="gender_label">Gender</string>
+    <string name="name_label">Name</string>
+    <string name="age_label">Age</string>
+    <string name="login_label">Login</string>
 </resources>

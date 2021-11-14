@@ -1,4 +1,4 @@
-package com.put.tsm.whour.screens.details
+package com.put.tsm.whour.ui.screens.details
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -15,7 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
-import com.put.tsm.whour.screens.RetrySection
+import com.put.tsm.whour.ui.composables.RetrySection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.Dialog

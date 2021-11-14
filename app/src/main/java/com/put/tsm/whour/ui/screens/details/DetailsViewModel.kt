@@ -1,8 +1,6 @@
-package com.put.tsm.whour.screens.details
+package com.put.tsm.whour.ui.screens.details
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -61,7 +59,7 @@ class DetailsViewModel @Inject constructor(
                     .maxByOrNull { it.value.size }
                     ?.key ?: return@launch
                 saveQuizResult(categoryId, winnerType)
-                sendEvent(DetailsUiEvent.QuizFinished(winnerType))
+                _eventsFlow.emit(DetailsUiEvent.QuizFinished(winnerType))
             }
         } else {
             itemsAnswered.value = itemsAnswered.value + 1

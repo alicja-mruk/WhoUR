@@ -1,4 +1,4 @@
-package com.put.tsm.whour.screens
+package com.put.tsm.whour.ui.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

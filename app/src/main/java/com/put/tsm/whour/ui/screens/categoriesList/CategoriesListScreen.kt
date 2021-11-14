@@ -1,4 +1,4 @@
-package com.put.tsm.whour.screens.categoriesList
+package com.put.tsm.whour.ui.screens.categoriesList
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.text.style.TextAlign
@@ -15,8 +15,7 @@ import androidx.navigation.NavController
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
 import androidx.compose.ui.Alignment.Companion.Center
-import com.put.tsm.whour.screens.RetrySection
-import timber.log.Timber
+import com.put.tsm.whour.ui.composables.RetrySection
 
 @Composable
 fun CategoriesListScreen(navController: NavController) {
