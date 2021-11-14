@@ -23,7 +23,7 @@ Project has been created to practice Composable architecture and to implement Go
 1. Splash screen is shown
 2. If user is logged in, is redirected to Category List Screen. Otherwise to Login Screen.
 3. Category List Screen contains multiple categories fetched from Firebase Firestore.
-4. Each Category has got even number of items inside. Choosing items is quiz-like. After finishing quiz, user got a message with summarizing description.
+4. Each Category has got even number of items inside. Choosing items is quiz-like. After finishing quiz, a message with summarizing description pops out.
 
 ## Used libraries 
 - Android composable
