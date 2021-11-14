@@ -16,6 +16,7 @@ import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
 import androidx.compose.ui.Alignment.Companion.Center
 import com.put.tsm.whour.screens.RetrySection
+import timber.log.Timber
 
 @Composable
 fun CategoriesListScreen(navController: NavController) {

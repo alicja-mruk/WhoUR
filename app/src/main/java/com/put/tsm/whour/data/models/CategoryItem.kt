@@ -5,6 +5,6 @@ data class CategoryItem(
     val categoryId: String,
     val description: String,
     val imageUrl: String,
-    val type: String,
-    val index:Int
+    val type: String?,
+    val index: Long
 )

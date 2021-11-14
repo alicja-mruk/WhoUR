@@ -6,6 +6,7 @@ import com.put.tsm.whour.data.repository.dataSource.local.LocalDataSource
 import com.put.tsm.whour.data.repository.dataSource.local.LocalDataSourceImpl
 import com.put.tsm.whour.data.repository.dataSource.remote.RemoteDataSource
 import com.put.tsm.whour.data.repository.dataSource.remote.RemoteDataSourceImpl
+import com.put.tsm.whour.data.repository.datastore.QuizDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,7 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesLocalDataSource(): LocalDataSource = LocalDataSourceImpl()
+    fun providesLocalDataSource(dataStore: QuizDataStore): LocalDataSource = LocalDataSourceImpl(dataStore)
 
     @Provides
     @Singleton

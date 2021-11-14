@@ -62,6 +62,10 @@ class RemoteDataSourceImpl @Inject constructor() : RemoteDataSource {
             }
     }
 
+    override suspend fun saveQuiz(categoryId: String, winnerType: String) {
+        // TODO: For now result is saved only locally
+    }
+
     companion object {
         const val CATEGORIES: String = "categories"
         const val CATEGORY_ID: String = "categoryId"

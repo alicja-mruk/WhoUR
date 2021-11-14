@@ -66,4 +66,8 @@ class BaseDataSourceImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun saveQuiz(categoryId: String, winnerType: String) {
+        localDataSource.saveQuiz(categoryId, winnerType)
+    }
 }
