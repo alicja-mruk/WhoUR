@@ -5,6 +5,8 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.initialization.InitializationStatus
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.put.tsm.whour.data.repository.datastore.QuizDataStore
+import com.put.tsm.whour.ui.composables.addInterstitialCallbacks
+import com.put.tsm.whour.ui.composables.loadInterstitial
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +26,11 @@ class App : Application() {
         CoroutineScope(Dispatchers.IO).launch {
             prefs.init()
             MobileAds.initialize(applicationContext)
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            loadInterstitial()
+            addInterstitialCallbacks()
         }
     }
 }

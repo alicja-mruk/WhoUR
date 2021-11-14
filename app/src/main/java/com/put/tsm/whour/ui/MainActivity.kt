@@ -13,6 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.put.tsm.whour.R
+import com.put.tsm.whour.ui.composables.addInterstitialCallbacks
+import com.put.tsm.whour.ui.composables.loadInterstitial
 import com.put.tsm.whour.ui.screens.login.LoginScreen
 import com.put.tsm.whour.ui.screens.categoriesList.CategoriesListScreen
 import com.put.tsm.whour.ui.screens.details.DetailsScreen

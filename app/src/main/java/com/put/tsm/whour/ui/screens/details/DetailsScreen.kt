@@ -17,6 +17,7 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.put.tsm.whour.ui.composables.RetrySection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
@@ -24,6 +25,8 @@ import androidx.compose.ui.window.DialogProperties
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.put.tsm.whour.R
+import com.put.tsm.whour.ui.composables.loadInterstitial
+import com.put.tsm.whour.ui.composables.showInterstitial
 import com.put.tsm.whour.ui.theme.RobotoCondensed
 import kotlinx.coroutines.flow.collect
 
@@ -66,11 +69,14 @@ fun DetailsView(
 
     var showModal by remember { mutableStateOf(false) }
     var winnerType by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     LaunchedEffect(eventsFlow) {
         viewModel.eventsFlow.collect { event ->
             when (event) {
                 is DetailsViewModel.DetailsUiEvent.QuizFinished -> {
+                    context.loadInterstitial()
+                    context.showInterstitial()
                     showModal = true
                     winnerType = event.winnerType
                 }

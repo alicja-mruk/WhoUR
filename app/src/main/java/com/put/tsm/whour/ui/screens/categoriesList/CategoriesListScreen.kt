@@ -18,7 +18,6 @@ import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.res.stringResource
-import com.google.android.gms.ads.AdSize
 import com.put.tsm.whour.R
 import com.put.tsm.whour.ui.RouteDestinations
 import com.put.tsm.whour.ui.composables.AdvertView
@@ -41,7 +40,6 @@ fun CategoriesListScreen(
             }
         }
     }
-
 
     Surface(
         modifier = Modifier
