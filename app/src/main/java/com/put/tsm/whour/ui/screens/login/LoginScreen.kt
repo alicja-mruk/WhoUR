@@ -1,5 +1,6 @@
 package com.put.tsm.whour.ui.screens.login
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -8,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
@@ -47,11 +49,24 @@ fun LoginView(navController: NavController, viewModel: LoginViewModel = hiltView
 
     val eventsFlow =
         viewModel.eventsFlow.collectAsState(initial = LoginViewModel.LoginUiEvent.Idle)
+    val context = LocalContext.current
+    val ageIsNotNumber = stringResource(
+        id = R.string.age_is_not_number
+    )
+    val ageIsNotCorrect = stringResource(
+        id = R.string.age_is_not_correct
+    )
 
     LaunchedEffect(eventsFlow) {
         viewModel.eventsFlow.collect { event ->
             when (event) {
                 is LoginViewModel.LoginUiEvent.LoginSuccess -> navController.navigate("categories_list_screen")
+                is LoginViewModel.LoginUiEvent.AgeIsNotInt -> Toast.makeText(
+                    context, ageIsNotNumber, Toast.LENGTH_SHORT
+                ).show()
+                is LoginViewModel.LoginUiEvent.AgeIsNotCorrect -> Toast.makeText(
+                    context, ageIsNotCorrect, Toast.LENGTH_SHORT
+                ).show()
                 is LoginViewModel.LoginUiEvent.Idle -> Unit
             }
         }
@@ -123,36 +138,37 @@ fun LoginView(navController: NavController, viewModel: LoginViewModel = hiltView
                 )
             }
         }
-    }
-    Button(
-        onClick = {
-            viewModel.login(
-                name = name,
-                age = age.toInt(),
-                gender = Gender.values()[selectedIndex]
-            )
-        },
-        contentPadding = PaddingValues(
-            start = 20.dp,
-            top = 12.dp,
-            end = 20.dp,
-            bottom = 12.dp
-        ),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 32.dp),
-        elevation = ButtonDefaults.elevation(),
-        enabled = name.isNotEmpty() && age.isNotEmpty()
-    ) {
-        Text(text = stringResource(R.string.login_label))
-
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxSize()
+        Button(
+            onClick = {
+                val ageFromString = age.toIntOrNull()
+                viewModel.login(
+                    name = name,
+                    age = ageFromString,
+                    gender = Gender.values()[selectedIndex]
+                )
+            },
+            contentPadding = PaddingValues(
+                start = 20.dp,
+                top = 12.dp,
+                end = 20.dp,
+                bottom = 12.dp
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 32.dp),
+            elevation = ButtonDefaults.elevation(),
+            enabled = name.isNotEmpty() && age.isNotEmpty()
         ) {
-            if (isLoading) {
-                CircularProgressIndicator(color = MaterialTheme.colors.primary)
-            }
+            Text(text = stringResource(R.string.login_label))
+        }
+    }
+
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        if (isLoading) {
+            CircularProgressIndicator(color = MaterialTheme.colors.primary)
         }
     }
 }

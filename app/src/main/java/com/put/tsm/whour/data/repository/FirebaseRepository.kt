@@ -15,4 +15,5 @@ interface FirebaseRepository {
     val completedQuizzesFlow: Flow<List<QuizAnswer>>
     val userFlow: Flow<User?>
     suspend fun login(name: String, age: Int, gender: Gender)
+    suspend fun logout()
 }

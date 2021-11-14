@@ -8,6 +8,7 @@ import com.put.tsm.whour.data.models.CategoryItem
 import com.put.tsm.whour.data.repository.usecases.GetItemsFromCategoryUseCase
 import com.put.tsm.whour.data.repository.usecases.SaveQuizResultUseCase
 import com.put.tsm.whour.data.utils.Result
+import com.put.tsm.whour.ui.RouteDestinations
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -21,7 +22,7 @@ class DetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
-    private var categoryId: String = savedStateHandle.get(CATEGORY_ID_KEY) ?: DEFAULT_CATEGORY_ID
+    private var categoryId: String = savedStateHandle.get(RouteDestinations.CATEGORY_ID_KEY) ?: DEFAULT_CATEGORY_ID
     private var index0ItemList: List<CategoryItem> = emptyList()
     private var index1ItemList: List<CategoryItem> = emptyList()
 
@@ -42,12 +43,6 @@ class DetailsViewModel @Inject constructor(
     sealed class DetailsUiEvent {
         object Idle : DetailsUiEvent()
         class QuizFinished(val winnerType: String) : DetailsUiEvent()
-    }
-
-    private fun sendEvent(event: DetailsUiEvent) {
-        viewModelScope.launch {
-            _eventsFlow.emit(event)
-        }
     }
 
     fun goNext(type: String) {
@@ -71,7 +66,6 @@ class DetailsViewModel @Inject constructor(
     companion object {
         const val FIRST_ITEM_GROUP: Long = 0
         const val SECOND_ITEM_GROUP: Long = 1
-        const val CATEGORY_ID_KEY: String = "categoryId"
         const val DEFAULT_CATEGORY_ID: String = "Default category id"
     }
 

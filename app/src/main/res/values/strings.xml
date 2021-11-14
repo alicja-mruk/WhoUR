@@ -10,4 +10,6 @@
     <string name="name_label">Name</string>
     <string name="age_label">Age</string>
     <string name="login_label">Login</string>
+    <string name="age_is_not_number">Age is not a number</string>
+    <string name="age_is_not_correct">Age is not correct number</string>
 </resources>

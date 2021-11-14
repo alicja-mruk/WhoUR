@@ -33,4 +33,8 @@ class FirebaseRepositoryImpl @Inject constructor(
     override suspend fun login(name: String, age: Int, gender: Gender) {
         dataStore.login(name, age, gender)
     }
+
+    override suspend fun logout() {
+        dataStore.logout()
+    }
 }

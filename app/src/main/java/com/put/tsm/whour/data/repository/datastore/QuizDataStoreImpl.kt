@@ -39,7 +39,7 @@ class QuizDataStoreImpl @Inject constructor(
     override suspend fun saveQuiz(categoryId: String, winnerType: String) {
         val isPresent = completedQuizzes.value.find { it.categoryId == categoryId } != null
         val quizAnswer = QuizAnswer(categoryId, winnerType)
-        addCompletedQuiz(isPresent, quizAnswer )
+        addCompletedQuiz(isPresent, quizAnswer)
     }
 
     private suspend fun addCompletedQuiz(isPresent: Boolean, quizAnswer: QuizAnswer?) {
@@ -72,6 +72,15 @@ class QuizDataStoreImpl @Inject constructor(
         moshi.jsonToObjectOrNull<List<QuizAnswer>>(completedQuizzesJson)
     }.firstOrNull()
 
+    private suspend fun getCurrentUser(): User? = dataStore.data.catch {
+        if (it is IOException) emit(emptyPreferences())
+        else throw Exception(it.message)
+    }.map {
+        val userJson = it[USER_KEY] ?: return@map null
+        if (userJson.isEmpty()) return@map null
+        moshi.jsonToObjectOrNull<User>(userJson)
+    }.firstOrNull()
+
     override suspend fun clear() {
         dataStore.edit { preferences ->
             try {
@@ -88,6 +97,7 @@ class QuizDataStoreImpl @Inject constructor(
 
     override suspend fun init() {
         completedQuizzes.value = getCompletedQuizzes() ?: emptyList()
+        user.value = getCurrentUser()
     }
 
     override suspend fun login(name: String, age: Int, gender: Gender) {

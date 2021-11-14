@@ -1,4 +1,4 @@
-package com.put.tsm.whour.ui
+package com.put.tsm.whour.ui.screens.splashScreen
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repository: FirebaseRepository) : ViewModel() {
+class SplashViewModel @Inject constructor(private val repository: FirebaseRepository) : ViewModel() {
     val isLoggedIn = mutableStateOf(false)
 
     init {

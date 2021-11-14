@@ -21,10 +21,22 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     sealed class LoginUiEvent {
         object Idle : LoginUiEvent()
         object LoginSuccess : LoginUiEvent()
+        object AgeIsNotInt : LoginUiEvent()
+        object AgeIsNotCorrect:  LoginUiEvent()
     }
 
-    fun login(name: String, age: Int, gender: Gender) {
+    fun login(name: String, age: Int?, gender: Gender) {
         viewModelScope.launch {
+            if (age == null) {
+                _eventsFlow.emit(LoginUiEvent.AgeIsNotInt)
+                return@launch
+            }
+
+            if (age > 120) {
+                _eventsFlow.emit(LoginUiEvent.AgeIsNotCorrect)
+                return@launch
+            }
+
             isLoading.value = true
             loginUseCase(name, age, gender)
             _eventsFlow.emit(LoginUiEvent.LoginSuccess)

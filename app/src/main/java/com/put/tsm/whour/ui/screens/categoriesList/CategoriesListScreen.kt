@@ -1,5 +1,6 @@
 package com.put.tsm.whour.ui.screens.categoriesList
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -7,6 +8,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -15,17 +18,37 @@ import androidx.navigation.NavController
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
 import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.graphics.Color
+import com.put.tsm.whour.ui.RouteDestinations
 import com.put.tsm.whour.ui.composables.RetrySection
+import com.put.tsm.whour.ui.theme.pink500
 
 @Composable
-fun CategoriesListScreen(navController: NavController) {
+fun CategoriesListScreen(
+    navController: NavController,
+    viewModel: CategoriesListViewModel = hiltViewModel()
+) {
     Surface(
-        color = MaterialTheme.colors.background,
+        color = MaterialTheme.colors.primary,
         modifier = Modifier.fillMaxSize()
     ) {
-        Column {
-            CategoriesList(navController = navController)
-        }
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {},
+                    navigationIcon = {
+                        IconButton(onClick = { viewModel.logout() }) {
+                            Icon(Icons.Filled.Settings, "")
+                        }
+                    },
+                    backgroundColor = MaterialTheme.colors.surface
+                )
+            }, content = {
+                Column {
+                    CategoriesList(navController = navController)
+                }
+            }
+        )
     }
 }
 
@@ -63,7 +86,7 @@ fun CategoryRow(navController: NavController, category: Category) {
         Button(
             onClick = {
                 navController.navigate(
-                    "details_screen/${category.id}"
+                    "${RouteDestinations.DETAILS}/${category.id}"
                 )
             },
             contentPadding = PaddingValues(
