@@ -1,7 +1,6 @@
 package com.put.tsm.whour.screens.details
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,7 +23,6 @@ import androidx.compose.ui.window.DialogProperties
 import com.put.tsm.whour.R
 import com.put.tsm.whour.ui.theme.RobotoCondensed
 import kotlinx.coroutines.flow.collect
-
 
 @Composable
 fun DetailsScreen(

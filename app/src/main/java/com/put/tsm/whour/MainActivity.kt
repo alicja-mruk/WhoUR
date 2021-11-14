@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.put.tsm.whour.screens.LoginScreen
 import com.put.tsm.whour.screens.categoriesList.CategoriesListScreen
 import com.put.tsm.whour.screens.details.DetailsScreen
 import com.put.tsm.whour.ui.theme.WhoUrComposeTheme
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = "categories_list_screen"
                 ) {
+                    composable("login_screen") { LoginScreen(navController = navController) }
                     composable("categories_list_screen") { CategoriesListScreen(navController = navController) }
                     composable(
                         "details_screen/{categoryId}", arguments = listOf(

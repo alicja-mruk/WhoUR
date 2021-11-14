@@ -37,19 +37,20 @@ class QuizDataStoreImpl @Inject constructor(
     override val userFlow: Flow<User?> = user
 
     override suspend fun saveQuiz(categoryId: String, winnerType: String) {
-        val quizAnswer = completedQuizzes.value.find { it.categoryId == categoryId }
-        addCompletedQuiz(quizAnswer)
+        val isPresent = completedQuizzes.value.find { it.categoryId == categoryId } != null
+        val quizAnswer = QuizAnswer(categoryId, winnerType)
+        addCompletedQuiz(isPresent, quizAnswer )
     }
 
-    private suspend fun addCompletedQuiz(quizAnswer: QuizAnswer?) {
+    private suspend fun addCompletedQuiz(isPresent: Boolean, quizAnswer: QuizAnswer?) {
         dataStore.edit { preferences ->
             val updatedQuizList: List<QuizAnswer>
             try {
-                updatedQuizList = if (quizAnswer == null) {
+                updatedQuizList = if (!isPresent) {
                     completedQuizzes.value + listOfNotNull(quizAnswer)
                 } else {
                     val quizListWithoutCurrent =
-                        completedQuizzes.value.filter { it.categoryId != quizAnswer.categoryId }
+                        completedQuizzes.value.filter { it.categoryId != quizAnswer?.categoryId }
                     quizListWithoutCurrent + listOfNotNull(quizAnswer)
                 }
                 val newQuizListJson =
