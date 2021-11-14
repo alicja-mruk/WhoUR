@@ -47,7 +47,6 @@ fun MainAppState() {
                 navArgument(RouteDestinations.CATEGORY_ID_KEY) {
                     type = NavType.StringType
                 },
-
                 )
         ) {
             val categoryId = remember {

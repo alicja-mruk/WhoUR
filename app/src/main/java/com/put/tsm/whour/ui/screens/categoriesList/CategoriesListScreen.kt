@@ -1,6 +1,5 @@
 package com.put.tsm.whour.ui.screens.categoriesList
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -18,10 +17,8 @@ import androidx.navigation.NavController
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
 import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.graphics.Color
 import com.put.tsm.whour.ui.RouteDestinations
 import com.put.tsm.whour.ui.composables.RetrySection
-import com.put.tsm.whour.ui.theme.pink500
 
 @Composable
 fun CategoriesListScreen(
@@ -29,9 +26,11 @@ fun CategoriesListScreen(
     viewModel: CategoriesListViewModel = hiltViewModel()
 ) {
     Surface(
-        color = MaterialTheme.colors.primary,
-        modifier = Modifier.fillMaxSize()
-    ) {
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 24.dp)
+    )
+    {
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -44,7 +43,11 @@ fun CategoriesListScreen(
                     backgroundColor = MaterialTheme.colors.surface
                 )
             }, content = {
-                Column {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(16.dp)
+                ) {
                     CategoriesList(navController = navController)
                 }
             }
