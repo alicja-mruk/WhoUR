@@ -17,14 +17,32 @@ import androidx.navigation.NavController
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.ui.theme.Roboto
 import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.res.stringResource
+import com.google.android.gms.ads.AdSize
+import com.put.tsm.whour.R
 import com.put.tsm.whour.ui.RouteDestinations
+import com.put.tsm.whour.ui.composables.AdvertView
 import com.put.tsm.whour.ui.composables.RetrySection
+import kotlinx.coroutines.flow.collect
 
 @Composable
 fun CategoriesListScreen(
     navController: NavController,
     viewModel: CategoriesListViewModel = hiltViewModel()
 ) {
+    val eventsFlow =
+        viewModel.eventsFlow.collectAsState(initial = CategoriesListViewModel.CategoriesListUiEvent.Idle)
+
+    LaunchedEffect(eventsFlow) {
+        viewModel.eventsFlow.collect { event ->
+            when (event) {
+                is CategoriesListViewModel.CategoriesListUiEvent.LogoutSuccess -> navController.popBackStack()
+                is CategoriesListViewModel.CategoriesListUiEvent.Idle -> Unit
+            }
+        }
+    }
+
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -45,9 +63,9 @@ fun CategoriesListScreen(
             }, content = {
                 Column(
                     modifier = Modifier
-                        .fillMaxHeight()
                         .padding(16.dp)
                 ) {
+                    AdvertView(addId = stringResource(id = R.string.ad_id_banner))
                     CategoriesList(navController = navController)
                 }
             }

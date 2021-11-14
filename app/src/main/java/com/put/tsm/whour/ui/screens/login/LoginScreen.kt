@@ -50,22 +50,16 @@ fun LoginView(navController: NavController, viewModel: LoginViewModel = hiltView
     val eventsFlow =
         viewModel.eventsFlow.collectAsState(initial = LoginViewModel.LoginUiEvent.Idle)
     val context = LocalContext.current
-    val ageIsNotNumber = stringResource(
-        id = R.string.age_is_not_number
-    )
-    val ageIsNotCorrect = stringResource(
-        id = R.string.age_is_not_correct
-    )
 
     LaunchedEffect(eventsFlow) {
         viewModel.eventsFlow.collect { event ->
             when (event) {
                 is LoginViewModel.LoginUiEvent.LoginSuccess -> navController.navigate("categories_list_screen")
                 is LoginViewModel.LoginUiEvent.AgeIsNotInt -> Toast.makeText(
-                    context, ageIsNotNumber, Toast.LENGTH_SHORT
+                    context, context.getString(R.string.age_is_not_number), Toast.LENGTH_SHORT
                 ).show()
                 is LoginViewModel.LoginUiEvent.AgeIsNotCorrect -> Toast.makeText(
-                    context, ageIsNotCorrect, Toast.LENGTH_SHORT
+                    context, context.getString(R.string.age_is_not_correct), Toast.LENGTH_SHORT
                 ).show()
                 is LoginViewModel.LoginUiEvent.Idle -> Unit
             }

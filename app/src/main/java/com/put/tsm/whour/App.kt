@@ -1,6 +1,9 @@
 package com.put.tsm.whour
 
 import android.app.Application
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.initialization.InitializationStatus
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.put.tsm.whour.data.repository.datastore.QuizDataStore
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +23,7 @@ class App : Application() {
         Timber.plant(Timber.DebugTree())
         CoroutineScope(Dispatchers.IO).launch {
             prefs.init()
+            MobileAds.initialize(applicationContext)
         }
     }
 }
