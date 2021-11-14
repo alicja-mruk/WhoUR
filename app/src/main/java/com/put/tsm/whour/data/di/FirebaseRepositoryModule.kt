@@ -2,7 +2,7 @@ package com.put.tsm.whour.data.di
 
 import com.put.tsm.whour.data.repository.FirebaseRepository
 import com.put.tsm.whour.data.repository.FirebaseRepositoryImpl
-import com.put.tsm.whour.data.repository.dataSource.BaseDataSource
+import com.put.tsm.whour.data.repository.datasource.BaseDataSource
 import com.put.tsm.whour.data.repository.datastore.QuizDataStore
 import dagger.Module
 import dagger.Provides

@@ -1,11 +1,11 @@
 package com.put.tsm.whour.data.di
 
-import com.put.tsm.whour.data.repository.dataSource.BaseDataSource
-import com.put.tsm.whour.data.repository.dataSource.BaseDataSourceImpl
-import com.put.tsm.whour.data.repository.dataSource.local.LocalDataSource
-import com.put.tsm.whour.data.repository.dataSource.local.LocalDataSourceImpl
-import com.put.tsm.whour.data.repository.dataSource.remote.RemoteDataSource
-import com.put.tsm.whour.data.repository.dataSource.remote.RemoteDataSourceImpl
+import com.put.tsm.whour.data.repository.datasource.BaseDataSource
+import com.put.tsm.whour.data.repository.datasource.BaseDataSourceImpl
+import com.put.tsm.whour.data.repository.datasource.local.LocalDataSource
+import com.put.tsm.whour.data.repository.datasource.local.LocalDataSourceImpl
+import com.put.tsm.whour.data.repository.datasource.remote.RemoteDataSource
+import com.put.tsm.whour.data.repository.datasource.remote.RemoteDataSourceImpl
 import com.put.tsm.whour.data.repository.datastore.QuizDataStore
 import dagger.Module
 import dagger.Provides

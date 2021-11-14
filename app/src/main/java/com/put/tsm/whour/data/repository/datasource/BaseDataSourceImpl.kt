@@ -1,9 +1,9 @@
-package com.put.tsm.whour.data.repository.dataSource
+package com.put.tsm.whour.data.repository.datasource
 
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.data.models.CategoryItem
-import com.put.tsm.whour.data.repository.dataSource.local.LocalDataSource
-import com.put.tsm.whour.data.repository.dataSource.remote.RemoteDataSource
+import com.put.tsm.whour.data.repository.datasource.local.LocalDataSource
+import com.put.tsm.whour.data.repository.datasource.remote.RemoteDataSource
 import com.put.tsm.whour.data.utils.NetworkUtils.retry
 import com.put.tsm.whour.data.utils.Result
 import javax.inject.Inject

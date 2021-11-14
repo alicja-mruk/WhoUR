@@ -2,11 +2,9 @@ package com.put.tsm.whour
 
 import android.app.Application
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.initialization.InitializationStatus
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.put.tsm.whour.data.repository.datastore.QuizDataStore
-import com.put.tsm.whour.ui.composables.addInterstitialCallbacks
-import com.put.tsm.whour.ui.composables.loadInterstitial
+import com.put.tsm.whour.ui.utils.addInterstitialCallbacks
+import com.put.tsm.whour.ui.utils.loadInterstitial
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

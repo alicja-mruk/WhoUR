@@ -1,4 +1,4 @@
-package com.put.tsm.whour.data.repository.dataSource.remote
+package com.put.tsm.whour.data.repository.datasource.remote
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

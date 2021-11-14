@@ -1,7 +1,7 @@
 package com.put.tsm.whour.data.repository
 
 import com.put.tsm.whour.data.models.*
-import com.put.tsm.whour.data.repository.dataSource.BaseDataSource
+import com.put.tsm.whour.data.repository.datasource.BaseDataSource
 import com.put.tsm.whour.data.repository.datastore.QuizDataStore
 import com.put.tsm.whour.data.utils.Result
 import kotlinx.coroutines.flow.Flow

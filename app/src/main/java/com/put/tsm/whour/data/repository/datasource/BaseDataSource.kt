@@ -1,4 +1,4 @@
-package com.put.tsm.whour.data.repository.dataSource
+package com.put.tsm.whour.data.repository.datasource
 
 import com.put.tsm.whour.data.models.Category
 import com.put.tsm.whour.data.models.CategoryItem
