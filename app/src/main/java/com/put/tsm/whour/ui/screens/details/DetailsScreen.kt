@@ -47,19 +47,6 @@ fun DetailsView(
     navController: NavHostController,
     viewModel: DetailsViewModel = hiltViewModel()
 ) {
-    val index0Item by remember { viewModel.index0Item }
-    val index1Item by remember { viewModel.index1Item }
-    val loadError by remember { viewModel.loadError }
-    val isLoading by remember { viewModel.isLoading }
-    val isEmpty by remember { viewModel.isEmpty }
-
-    val index0EntryType = index0Item?.type ?: ""
-    val index0EntryDescription = index0Item?.description ?: ""
-    val index0EntryImageUrl = index0Item?.imageUrl ?: ""
-
-    val index1EntryType = index1Item?.type ?: ""
-    val index1EntryDescription = index1Item?.description ?: ""
-    val index1EntryImageUrl = index1Item?.imageUrl ?: ""
 
     val eventsFlow =
         viewModel.eventsFlow.collectAsState(initial = DetailsViewModel.DetailsUiEvent.Idle)
@@ -67,6 +54,8 @@ fun DetailsView(
     var showModal by remember { mutableStateOf(false) }
     var winnerType by remember { mutableStateOf("") }
     val context = LocalContext.current
+
+
 
     LaunchedEffect(eventsFlow) {
         viewModel.eventsFlow.collect { event ->
@@ -81,6 +70,20 @@ fun DetailsView(
             }
         }
     }
+
+    val index0Item by remember { viewModel.index0Item }
+    val index1Item by remember { viewModel.index1Item }
+    val loadError by remember { viewModel.loadError }
+    val isLoading by remember { viewModel.isLoading }
+    val isEmpty by remember { viewModel.isEmpty }
+
+    val index0EntryType = index0Item?.type ?: ""
+    val index0EntryDescription = index0Item?.description ?: ""
+    val index0EntryImageUrl = index0Item?.imageUrl ?: ""
+
+    val index1EntryType = index1Item?.type ?: ""
+    val index1EntryDescription = index1Item?.description ?: ""
+    val index1EntryImageUrl = index1Item?.imageUrl ?: ""
 
     Box(
         contentAlignment = Alignment.Center,
