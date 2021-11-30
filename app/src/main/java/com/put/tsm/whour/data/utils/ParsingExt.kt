@@ -6,7 +6,6 @@ import kotlin.reflect.KClass
 fun <T : Any> mapToObject(map: MutableMap<String, Any>?, clazz: KClass<T>): T? {
     if (map == null) return null
     val constructor = clazz.constructors.first()
-
     val args = constructor
         .parameters.associateWith { map[it.name] }
 

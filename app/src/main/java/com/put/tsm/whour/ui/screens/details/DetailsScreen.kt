@@ -55,8 +55,6 @@ fun DetailsView(
     var winnerType by remember { mutableStateOf("") }
     val context = LocalContext.current
 
-
-
     LaunchedEffect(eventsFlow) {
         viewModel.eventsFlow.collect { event ->
             when (event) {
@@ -78,11 +76,11 @@ fun DetailsView(
     val isEmpty by remember { viewModel.isEmpty }
 
     val index0EntryType = index0Item?.type ?: ""
-    val index0EntryDescription = index0Item?.description ?: ""
+    val index0EntryDescription = index0Item?.descryption ?: ""
     val index0EntryImageUrl = index0Item?.imageUrl ?: ""
 
     val index1EntryType = index1Item?.type ?: ""
-    val index1EntryDescription = index1Item?.description ?: ""
+    val index1EntryDescription = index1Item?.descryption ?: ""
     val index1EntryImageUrl = index1Item?.imageUrl ?: ""
 
     Box(
@@ -155,7 +153,19 @@ fun DetailsView(
 
 enum class Types(val key: String) {
     CAT("cat"),
-    DOG("dog")
+    DOG("dog"),
+    MTB("mtb"),
+    ROAD("road"),
+    SUV("suv"),
+    COUPE("coupe"),
+    HOTDOG("hotdog"),
+    HAMBURGER("hamburger"),
+    COMEDY("comedy"),
+    HORROR("horror"),
+    WINTER("winter"),
+    SUMMER("summer"),
+    MOUNTAINS("mountains"),
+    SEA("sea")
 }
 
 @Composable
@@ -163,6 +173,18 @@ fun getDescription(winnerType: String): String {
     return when (winnerType) {
         Types.CAT.key -> stringResource(id = R.string.cat_lover_description)
         Types.DOG.key -> stringResource(id = R.string.dog_lover_description)
+        Types.MTB.key -> stringResource(id = R.string.mtb_lover_description)
+        Types.ROAD.key -> stringResource(id = R.string.road_lover_description)
+        Types.SUV.key -> stringResource(id = R.string.suv_lover_description)
+        Types.COUPE.key -> stringResource(id = R.string.coupe_lover_description)
+        Types.HOTDOG.key -> stringResource(id = R.string.hotdog_lover_description)
+        Types.HAMBURGER.key -> stringResource(id = R.string.hamburger_lover_description)
+        Types.COMEDY.key -> stringResource(id = R.string.comedy_lover_description)
+        Types.HORROR.key -> stringResource(id = R.string.horror_lover_description)
+        Types.WINTER.key -> stringResource(id = R.string.winter_lover_description)
+        Types.SUMMER.key -> stringResource(id = R.string.summer_lover_description)
+        Types.MOUNTAINS.key -> stringResource(id = R.string.mountains_lover_description)
+        Types.SEA.key -> stringResource(id = R.string.sea_lover_description)
         else -> stringResource(id = R.string.unknown_type)
     }
 }

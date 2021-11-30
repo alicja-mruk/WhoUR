@@ -2,8 +2,7 @@
     <string name="app_name">whour</string>
     <string name="general_error_message">Fetch error has occured</string>
     <string name="no_category_id">No category id found</string>
-    <string name="dog_lover_description">Dog lover description</string>
-    <string name="cat_lover_description">Cat lover description</string>
+
     <string name="unknown_type">This type is unknown</string>
     <string name="empty_list">List is empty</string>
     <string name="gender_label">Gender</string>
@@ -14,4 +13,18 @@
     <string name="age_is_not_correct">Age is not correct number</string>
     <string name="ad_id_banner">ca-app-pub-3940256099942544/6300978111</string>
     <string name="ad_id_rewarded">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="dog_lover_description">Dog lover description</string>
+    <string name="cat_lover_description">Cat lover description</string>
+    <string name="mtb_lover_description">Mtb lover description</string>
+    <string name="road_lover_description">Road lover description</string>
+    <string name="suv_lover_description">Suv lover description</string>
+    <string name="coupe_lover_description">Coupe lover description</string>
+    <string name="hotdog_lover_description">Hotdog lover description</string>
+    <string name="hamburger_lover_description">Hamburger lover description</string>
+    <string name="comedy_lover_description">Comedy lover description</string>
+    <string name="horror_lover_description">Horror lover description</string>
+    <string name="winter_lover_description">Winter lover description</string>
+    <string name="summer_lover_description">Summer lover description</string>
+    <string name="mountains_lover_description">Mountains lover description</string>
+    <string name="sea_lover_description">Sea lover description</string>
 </resources>
